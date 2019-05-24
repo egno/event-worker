@@ -11,7 +11,6 @@ pathOut = '/opt/data/queue/old'
 
 def checkPath(path):
     try:
-        print('check:', path)
         makedirs(path)
     except OSError as e:
         pass
