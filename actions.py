@@ -36,7 +36,11 @@ def doSMS(data):
     res = sendSMS(data)
     if res is None:
         res = sendTelegram(
-            text = f'SMS to {data["phone"]}: {data["text"]}'
+            text = f'Fail: SMS to {data["phone"]}: {data["text"]}'
+        )
+    else:
+        res = sendTelegram(
+            text = f'Success: SMS to {data["phone"]}: {data["text"]}'
         )
     return res
 
