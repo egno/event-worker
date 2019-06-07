@@ -4,6 +4,7 @@ import telegram
 
 def getAction(table):
     tables = {
+        'transaction': doTransaction,
         'message': doMessage,
         'SMS': doSMS
     }
@@ -51,3 +52,11 @@ def doMessage(data):
         text=f'Получено сообщение {data["data"]["id"]} от {data["data"]["j"]["from"]["contact"]}: {data["data"]["j"]["message"]}',
         chat='message'
     )
+
+def doTransaction(data):
+    if data.get('action') == "INSERT" and data.get('data',{}).get('j',{}).get('type') == 'CustomerPayment':
+        print('Do transaction:', data)
+        return sendTelegram(
+            text=f' {data["data"]["j"]["description"]} {data["data"]["j"]["business"]}: {data["data"]}',
+            chat='message'
+        )
