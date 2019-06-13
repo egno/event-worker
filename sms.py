@@ -6,7 +6,6 @@ import requests
 class SMSGateway(object):
 
     def __init__(self):
-        self.loadEnv()
         self.phone = None
         self.text = None
         self.businessId = None
@@ -14,6 +13,7 @@ class SMSGateway(object):
         self.time= None
         self.gateway=None
         self.site=None
+        self.loadEnv()
 
     def loadEnv(self):
         load_dotenv()
