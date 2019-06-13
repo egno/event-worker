@@ -45,11 +45,11 @@ def doSMS(data):
     
     if success:
         res = sendTelegram(
-            text = f'Fail: SMS to {data["phone"]}: {data["text"]}'
+            text = f'Success: SMS to {data["phone"]}: {data["text"]}'
         )
     else:
         res = sendTelegram(
-            text = f'Success: SMS to {data["phone"]}: {data["text"]}'
+            text = f'Fail: SMS to {data["phone"]}: {data["text"]}'
         )
     return res
 
