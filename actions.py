@@ -35,7 +35,7 @@ def sendTelegram(chat=None, text=None):
 def doSMS(data):
     print('Do SMS:', data)
     res = sendSMS(data)
-    if res is None or not res.get('success', False):
+    if res is None or not res.json().get('success', False):
         res = sendTelegram(
             text = f'Fail: SMS to {data["phone"]}: {data["text"]}'
         )
