@@ -12,7 +12,7 @@ pathOut = '/opt/data/queue/old'
 def checkPath(path):
     try:
         makedirs(path)
-    except OSError as e:
+    except OSError:
         pass
 
 
