@@ -12,6 +12,8 @@ class SMSGateway(object):
         self.businessId = None
         self.recordId = None
         self.time= None
+        self.gateway=None
+        self.site=None
 
     def loadEnv(self):
         load_dotenv()
