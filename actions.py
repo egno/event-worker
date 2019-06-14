@@ -34,9 +34,15 @@ def sendTelegram(chat=None, text=None):
 
 def doSMS(data):
     print('Do SMS:', data)
-    res = sendSMS(data)
+    req = sendSMS(data)
+    res = None
     success = False
-    if res is None:
+    try:
+        res = req.json()
+    except Exception:
+        pass
+    
+    if not res is None:
         print('Response:', res)
         try:
             success = res.get('success', False)
