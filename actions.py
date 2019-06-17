@@ -46,7 +46,8 @@ def doSMS(data):
         print('Response:', res)
         try:
             success = res.get('response',{}).get('success', False)
-        except Exception:
+        except Exception as e:
+            print('Error', e)
             pass
     
     if success:
