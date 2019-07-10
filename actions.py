@@ -45,7 +45,7 @@ def doSMS(data):
     if not res is None:
         print('Response:', res)
         try:
-            success = res.get('success', False)
+            success = res.get('success', False) or res.get('response',{}).get('success', False)
         except Exception:
             pass
     
