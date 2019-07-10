@@ -1,5 +1,6 @@
 import sms
 import telegram
+import json
 
 
 def getAction(table):
@@ -37,11 +38,12 @@ def doSMS(data):
     req = sendSMS(data)
     res = None
     success = False
+
     try:
         res = req.json()
     except Exception:
         pass
-    
+
     if not res is None:
         print('Response:', res)
         try:
@@ -55,7 +57,8 @@ def doSMS(data):
         )
     else:
         res = sendTelegram(
-            text = f'Fail: SMS to {data["phone"]}: {data["text"]}'
+            text = f'''Fail: SMS to {data["phone"]}: {data["text"]}
+{res.get('details',{}).get('message') or res.get('response',{}).get('response',{}).get('data',{}).get('message') or json.dumps(res, indent=2, sort_keys=True)}'''
         )
     return res
 
